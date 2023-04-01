@@ -1,11 +1,15 @@
 const root = document.querySelector("#root")
+const textTitle = 'Bom dia'
+const textSmall = 'text pequeno'
+const otherText = 'Outro texto'
 
-function newElement(tag, content) {
-    const title = `<${tag}>${content}</${tag}>`
+const title = Title`
+    color: red;
+    ${textTitle}
+    font-size: 20px;
 
-    root.insertAdjacentHTML("beforeend", title)
-}
+`
 
-newElement('h1', 'Eita')
+root.insertAdjacentHTML('beforeend', title)
 
 
