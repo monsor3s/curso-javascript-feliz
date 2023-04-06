@@ -1,15 +1,16 @@
 const root = document.querySelector("#root")
-const textTitle = 'Bom dia'
-const textSmall = 'text pequeno'
-const otherText = 'Outro texto'
+const textTitle = 'Dificuldade'
 
 const title = Title`
-    color: red;
+    color: #82589F;
+    font-size: 2.5rem;
+    letter-spacing: 1.2px
+    margin-bottom: 4rem;
     ${textTitle}
-    font-size: 20px;
 
 `
 
+
+
 root.insertAdjacentHTML('beforeend', title)
-
-
+root.insertAdjacentHTML('beforeend', wrapperCharacters)

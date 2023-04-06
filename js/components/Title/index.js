@@ -4,6 +4,5 @@ function Title(css, textContent) {
     ${textContent}
     </h1>
     
-    
     `
 }
