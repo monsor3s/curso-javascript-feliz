@@ -2,19 +2,22 @@
 const style = `<style>
         * {
             margin: 0;
-            border: 0;
-            box-sizing: border-box;
+            padding: 0;
+            border: none;
         }
 
         body {
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             background-color: #2C3A47;    
         }
 
         #root {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             box-sizing: border-box;
             font-family: 'Press Start 2P', cursive;
             background-color: #3B3B98;
