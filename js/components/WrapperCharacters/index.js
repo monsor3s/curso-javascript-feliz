@@ -12,5 +12,6 @@ const wrapperCharacters = WrapperCharacters`
     display: flex;
     justify-content: space-evenly;
     margin-top: 2rem;
+    
     ${emoji + emoji + emoji}
 `

@@ -1,4 +1,4 @@
-const Item = (css, content) => (
+const Item = (css, content = '') => (
     `<li style="${css}">${content}</li>`
 )
 
@@ -7,10 +7,22 @@ const Slide = (css, content) => (
 
 )
 
+const item = Item`
+    list-style: none;
+    height: calc(var(--line-height) * 3);
+    width: calc(var(--line-height) * 3);
+    background-color: var(--happy-color);
+
+`
+
 const slideContent = 'vai tomando'
 const slide = Slide`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 80%;
-    height: 10px;
-    background-color:   #EAB543;
-    ${slideContent}
+    height: var(--line-height);
+    background-color: var(--happy-color);
+    margin-top: auto;
+    ${item + item + item}
 `
