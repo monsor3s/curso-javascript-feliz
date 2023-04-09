@@ -3,6 +3,7 @@ const style = `<style>
         :root {
             --line-height: 10px;
             --happy-color: #EAB543;
+            --action-color: #F8EFBA;
         }
 
         * {
