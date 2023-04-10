@@ -1,42 +1,58 @@
 const states = [true, false, false]
 
 function showItems(stateItems) {
-    const item = Item`
+    const item = (pos) => Item`
     .item { 
-    list-style: none;
-    height: calc(var(--line-height) * 3);
-    width: calc(var(--line-height) * 3);
-    background-color: var(--happy-color);
-    }
-`
-
-const itemActive = Item`
-    .item {
         list-style: none;
         height: calc(var(--line-height) * 3);
         width: calc(var(--line-height) * 3);
         background-color: var(--happy-color);
+        transition: transform 100ms linear;
+        cursor: pointer;
+        border-radius: 14px;
     }
+    ${`pos-${pos}`}
+`
 
+    const itemActive = (pos) => Item`
     .item.active {
         transform: scale(1.6)
     }
 
-    ${'active'}
+    ${'active pos-${pos}'}
 `
 
-    const items = stateItems.map(state => {
+    const items = stateItems.map((state, index) => {
         if (state) {
-            return itemActive
+            return itemActive(index + 1)
         }
-        return item
+        return item(index + 1)
     })
 
     return items.join('')
 }
 
-function handleClick() {
-    console.log('show')
+function clearAction(action) {
+    action.classList.remove('second')
+    action.classList.remove('third')
+}
+
+function handleClick(event) {
+    const { target } = event
+    const allItems = document.querySelectorAll('.item')
+    const action = document.querySelector('.action')
+
+    allItems.forEach(item => item.classList.remove('active'))
+    target.classList.add('active');
+
+    clearAction(action)
+    if (target.classList.contains('pos-2')) {
+        action.classList.add('second')
+    }
+
+    if (target.classList.contains('pos-3')) {
+        action.classList.add('third')
+    }
 }
 
 function createStyle(css) {
@@ -53,7 +69,7 @@ function createStyle(css) {
 const Action = (css) => {
     createStyle(css)
     return (
-        `<li class="action" style="${css}">
+        `<li class="action">
         </li>
         `
     )
@@ -64,8 +80,7 @@ const Item = (css, className) => {
 
     return (
     `<li class="item ${className}"
-        style="${css}" 
-        onclick="handleClick()">
+        onclick="handleClick(event)">
     </li>
     `
 )}
@@ -83,6 +98,17 @@ const action = Action`
     width: calc(var(--line-height) * 4);
     position: absolute;
     left: -5px;
+    transition: transform 300ms linear;
+    border-radius: 30px;
+}
+
+.action.second {
+    transform: translateX(293px);
+}
+
+.action.third {
+    transform: translateX(585px);
+
 }
 `
 
